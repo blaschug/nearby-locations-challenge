@@ -1,5 +1,5 @@
-using Locations.Application.Locations.Commands.Queries;
 using Locations.Application.Locations.Commands.SearchNearbyLocations;
+using Locations.Application.Locations.Queries.GetAllSearches;
 using Locations.Contracts.Locations;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

@@ -2,7 +2,7 @@ using Locations.Application.Commons.Interfaces.Persistance;
 using Locations.Contracts.Locations;
 using MediatR;
 
-namespace Locations.Application.Locations.Commands.Queries
+namespace Locations.Application.Locations.Queries.GetAllSearches
 {
     public class GetAllSearchesQueryHandler
         : IRequestHandler<GetAllSearchesQuery, List<GetSearchResponse>>

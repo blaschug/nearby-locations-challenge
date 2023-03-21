@@ -23,9 +23,28 @@ namespace Locations.Application.Locations.Commands.SearchNearbyLocations
             _locationSearchBuilder = locationSearchBuilder;
         }
         
-        public Task<SearchNearbyLocationsResponse> Handle(SearchNearbyLocationsCommand request, CancellationToken cancellationToken)
+        public async Task<SearchNearbyLocationsResponse> Handle(SearchNearbyLocationsCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var providerResult = await _locationsProvider.SearchLocationsAsync(request.Latitude,
+                request.Longitude,
+                request.Category);
+
+            var locationSearch = _locationSearchBuilder.Build(providerResult, request);                           
+
+            await _locationRepository.InsertAsync(locationSearch);
+
+            return new SearchNearbyLocationsResponse(
+                request.Latitude,
+                request.Longitude,
+                request.Category,
+                providerResult.NearbyLocationsFound.ConvertAll<NearbyLocationInfoResponse>(x =>
+                {
+                    return new NearbyLocationInfoResponse(
+                        x.LocationId,
+                        x.Name,
+                        x.Latitude,
+                        x.Longitude);
+                }));
         }
     }
 }

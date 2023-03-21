@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nearby-locations-challenge", "nearby-locations-challenge\nearby-locations-challenge.csproj", "{8361B10B-09FE-4716-811E-D57DE80B5040}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locations.API", "Locations.API\Locations.API.csproj", "{8361B10B-09FE-4716-811E-D57DE80B5040}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locations.Domain", "Locations.Domain\Locations.Domain.csproj", "{27F48522-E2DC-402E-B07D-D8A746991BF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locations.Contracts", "Locations.Contracts\Locations.Contracts.csproj", "{01354193-F2AE-473F-9C2D-29CF92C92A23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locations.Application", "Locations.Application\Locations.Application.csproj", "{187EE4D7-C228-44F5-B0BE-7767F3747BB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locations.Infrastructure", "Locations.Infrastructure\Locations.Infrastructure.csproj", "{34044F97-25A8-4322-B8B8-B4B408A366F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +24,17 @@ Global
 		{27F48522-E2DC-402E-B07D-D8A746991BF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27F48522-E2DC-402E-B07D-D8A746991BF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27F48522-E2DC-402E-B07D-D8A746991BF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01354193-F2AE-473F-9C2D-29CF92C92A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01354193-F2AE-473F-9C2D-29CF92C92A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01354193-F2AE-473F-9C2D-29CF92C92A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01354193-F2AE-473F-9C2D-29CF92C92A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187EE4D7-C228-44F5-B0BE-7767F3747BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187EE4D7-C228-44F5-B0BE-7767F3747BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187EE4D7-C228-44F5-B0BE-7767F3747BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187EE4D7-C228-44F5-B0BE-7767F3747BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34044F97-25A8-4322-B8B8-B4B408A366F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34044F97-25A8-4322-B8B8-B4B408A366F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34044F97-25A8-4322-B8B8-B4B408A366F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34044F97-25A8-4322-B8B8-B4B408A366F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

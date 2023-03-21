@@ -13,10 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Commons\Interfaces" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Locations.Contracts\Locations.Contracts.csproj" />
       <ProjectReference Include="..\Locations.Domain\Locations.Domain.csproj" />
     </ItemGroup>

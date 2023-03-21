@@ -1,8 +1,9 @@
+using Locations.Domain.Abstractions;
 using Locations.Domain.LocationsSearches.Entities;
 
 namespace Locations.Domain.LocationsSearches;
 
-public class LocationSearch
+public class LocationSearch : Entity
 {
     public string Id { get; set; }
     public string ProviderName { get; set; }

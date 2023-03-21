@@ -1,6 +1,7 @@
 using System.Globalization;
 using Locations.Application.Commons.Interfaces;
 using Locations.Contracts.Providers;
+using Locations.Contracts.Providers.Locations;
 using Locations.Infrastructure.Constants;
 using Locations.Infrastructure.Exceptions;
 using RestSharp;

@@ -14,20 +14,25 @@ namespace Locations.Infrastructure.Persistance.Repositories
 
         public async Task<List<LocationSearch>> GetAll(string? category = null)
         {
+            List<LocationSearch> locationSearches;
             IQueryable<LocationSearch> query;
-
-            if (string.IsNullOrEmpty(category)) 
+            query = _dbSet
+                .Include(p => p.Response)
+                .ThenInclude(q => q.NearLocations)
+                .Include(p => p.Request);
+            
+            if (!string.IsNullOrEmpty(category)) 
             {
-                query = _dbSet.Where(p => p.Response.CategoryFilteredBy == category);
+                locationSearches = await query.Where(p => p.Response.CategoryFilteredBy == category).ToListAsync();
             }
             else
             {
-                query = _dbSet.AsQueryable();
+                locationSearches = await query.ToListAsync();
             }
 
-            query.Include(p => p.Response).Include(p => p.Request);
+            // query.Include(p => p.Response).Include(p => p.Request);
 
-            return await query.ToListAsync();
+            return locationSearches;
         }
     }   
 }

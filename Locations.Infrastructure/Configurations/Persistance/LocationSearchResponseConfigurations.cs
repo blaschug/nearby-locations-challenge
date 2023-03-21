@@ -15,6 +15,8 @@ namespace Locations.Infrastructure.Configurations.Persistance
             builder
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
+
+            builder.HasMany(p => p.NearLocations);
         }
     }
 }

@@ -1,4 +1,5 @@
 using Locations.Contracts.Providers;
+using Locations.Contracts.Providers.Locations;
 
 namespace Locations.Application.Commons.Interfaces
 {

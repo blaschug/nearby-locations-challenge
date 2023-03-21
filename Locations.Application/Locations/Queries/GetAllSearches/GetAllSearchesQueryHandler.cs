@@ -18,33 +18,33 @@ namespace Locations.Application.Locations.Queries.GetAllSearches
         {
             var locationSearches = await _locationRepository.GetAll();
 
-            var searcesResponse = locationSearches.ConvertAll<GetSearchResponse>(p =>
+            var searchResponses = locationSearches.ConvertAll<GetSearchResponse>(ls =>
             {
                 return new GetSearchResponse(
-                    p.Id,
-                    p.ProviderName,
+                    ls.Id,
+                    ls.ProviderName,
                     new LocationSearchRequest(
-                        p.Request.Id,
-                        p.Request.Coordinates.Latitude,
-                        p.Request.Coordinates.Longitude,
-                        p.Request.Category),
+                        ls.Request.Id,
+                        ls.Request.Coordinates.Latitude,
+                        ls.Request.Coordinates.Longitude,
+                        ls.Request.Category),
                     new LocationSearchResponse(
-                        p.Response.Id,
-                        p.Response.CategoryFilteredBy,
-                        p.Response.NearLocations.ConvertAll<LocationInfoResponse>(q =>
+                        ls.Response.Id,
+                        ls.Response.CategoryFilteredBy,
+                        ls.Response.NearLocations.ConvertAll<LocationInfoResponse>(lir =>
                         {
                             return new LocationInfoResponse(
-                                q.Id,
-                                q.LocationId,
-                                q.Name,
-                                q.Coordinates.Latitude,
-                                q.Coordinates.Longitude);
+                                lir.Id,
+                                lir.LocationId,
+                                lir.Name,
+                                lir.Coordinates.Latitude,
+                                lir.Coordinates.Longitude);
                         })),
-                    p.Created
+                    ls.Created
                 );
             });
 
-            return searcesResponse;
+            return searchResponses;
         }
     }
 }

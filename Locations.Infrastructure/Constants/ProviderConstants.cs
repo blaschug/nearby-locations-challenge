@@ -11,6 +11,7 @@ namespace Locations.Infrastructure.Constants
         public static partial class ExceptionMessages
         {
             public const string UnavailableProvider = "External provider is not available. Try again in a few minutes.";
+            public const string InvalidProviderName = "There is no implementation for the given Provider name";
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Locations.Contracts.Providers
+namespace Locations.Contracts.Providers.Locations
 {
     public class ProviderResult
     {

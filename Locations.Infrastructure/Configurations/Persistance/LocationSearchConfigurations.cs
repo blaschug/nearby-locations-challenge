@@ -15,6 +15,10 @@ namespace Locations.Infrastructure.Configurations.Persistance
             builder
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd();
+
+            builder.HasOne(p => p.Request);
+            
+            builder.HasOne(p => p.Response);
         }
     }
 }

@@ -5,5 +5,7 @@ namespace Locations.Infrastructure.Configurations
         public string BaseURL { get; set; }
         public string ApiKey { get; set; }
         public string FixedRadius { get; set; }
+        
+        public string ProviderName { get; set; }
     }
 }

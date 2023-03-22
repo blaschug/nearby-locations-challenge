@@ -10,16 +10,23 @@ var connection = new HubConnectionBuilder()
     .Build();
 
 connection.On<string>("SuccessRequest", (message) => {
-    Console.WriteLine(message);
+    Console.WriteLine("Successfully request done: \n" + message);
 
     return Task.CompletedTask;
 });
 
-await connection.StartAsync();
-
-Console.WriteLine("ConsoleApp started and listening.");
-
-while(true)
+try
 {
-    await Task.Delay(1000);
+    await connection.StartAsync();
+    
+    Console.WriteLine("ConsoleApp started and listening.");
+
+    while(true)
+    {
+        await Task.Delay(1000);
+    }
+}
+catch (Exception e)
+{
+    Console.WriteLine("WebApi should be running before run this one.");
 }

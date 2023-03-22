@@ -31,15 +31,13 @@ namespace Locations.Application.Locations.Queries.GetAllSearches
                     new LocationSearchResponse(
                         ls.Response.Id,
                         ls.Response.CategoryFilteredBy,
-                        ls.Response.NearLocations.ConvertAll<LocationInfoResponse>(lir =>
-                        {
-                            return new LocationInfoResponse(
+                        ls.Response.NearLocations.ConvertAll<LocationInfoResponse>(lir => 
+                            new LocationInfoResponse(
                                 lir.Id,
                                 lir.LocationId,
                                 lir.Name,
                                 lir.Coordinates.Latitude,
-                                lir.Coordinates.Longitude);
-                        })),
+                                lir.Coordinates.Longitude))),
                     ls.Created
                 );
             });

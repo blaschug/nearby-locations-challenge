@@ -1,18 +1,16 @@
 using Locations.Application;
 using Locations.Infrastructure;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using nearby_locations_challenge;
+using nearby_locations_challenge.MessagesHub;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 //application DI
 builder.Services
+    .AddAPI()
     .AddApplication()
     .AddInfrastructure(builder.Configuration);
-
 
 var app = builder.Build();
 
@@ -22,8 +20,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+app.MapHub<SuccessRequestMessage>("/success-request");
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

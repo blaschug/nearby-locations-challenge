@@ -35,17 +35,15 @@ namespace Locations.Infrastructure.Providers.Locations
                 throw new LocationsProviderException();
             }
 
-            var googleResults = googleResponse.Results.ConvertAll<LocationResultInfo>(x =>
-            {
-                return new LocationResultInfo
+            var googleResults = googleResponse.Results.ConvertAll<LocationResultInfo>(x => 
+                new LocationResultInfo
                 {
                     LocationId = x.Place_Id,
                     Latitude = x.Geometry.Location.Lat,
                     Longitude = x.Geometry.Location.Lng,
                     Name = x.Name,
                     Categories = x.Types,
-                };
-            });
+                });
 
             return new ProviderResult
             {

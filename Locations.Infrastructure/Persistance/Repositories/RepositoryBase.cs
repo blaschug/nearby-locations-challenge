@@ -19,7 +19,7 @@ namespace Locations.Infrastructure.Persistance.Repositories
         {
             await _dbSet.AddAsync(entity);
 
-            await this.SaveChangesAsync();
+            await SaveChangesAsync();
         }
 
         public async Task<int> SaveChangesAsync()

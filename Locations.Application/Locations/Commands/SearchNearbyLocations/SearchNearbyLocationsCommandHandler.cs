@@ -37,14 +37,12 @@ namespace Locations.Application.Locations.Commands.SearchNearbyLocations
                 request.Latitude,
                 request.Longitude,
                 request.Category,
-                providerResult.NearbyLocationsFound.ConvertAll<NearbyLocationInfoResponse>(x =>
-                {
-                    return new NearbyLocationInfoResponse(
+                providerResult.NearbyLocationsFound.ConvertAll<NearbyLocationInfoResponse>(x => 
+                    new NearbyLocationInfoResponse(
                         x.LocationId,
                         x.Name,
                         x.Latitude,
-                        x.Longitude);
-                }));
+                        x.Longitude)));
         }
     }
 }

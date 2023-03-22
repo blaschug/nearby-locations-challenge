@@ -1,9 +1,9 @@
 using System.Globalization;
 using Locations.Application.Commons.Interfaces;
-using Locations.Contracts.Providers;
 using Locations.Contracts.Providers.Locations;
 using Locations.Infrastructure.Constants;
 using Locations.Infrastructure.Exceptions;
+using NLog;
 using RestSharp;
 
 namespace Locations.Infrastructure.Providers.Locations
@@ -11,6 +11,7 @@ namespace Locations.Infrastructure.Providers.Locations
     public class GoogleLocationsProvider : ILocationsProvider
     {
         private readonly RestClient _restClient;
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public GoogleLocationsProvider(RestClient restClient)
         {
@@ -32,6 +33,8 @@ namespace Locations.Infrastructure.Providers.Locations
             }
             catch (Exception ex)
             {
+                logger.Error(LogMessages.Error.ErrorWhenCallingProvider(ProviderConstants.Google.ProviderName), ex);
+                
                 throw new LocationsProviderException();
             }
 

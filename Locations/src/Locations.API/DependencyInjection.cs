@@ -1,4 +1,4 @@
-using nearby_locations_challenge.MessagesHub;
+using nearby_locations_challenge.Hub;
 
 namespace nearby_locations_challenge;
 

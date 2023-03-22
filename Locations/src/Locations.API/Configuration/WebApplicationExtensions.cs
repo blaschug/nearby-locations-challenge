@@ -1,6 +1,6 @@
 using Locations.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
-using nearby_locations_challenge.MessagesHub;
+using nearby_locations_challenge.Hub;
 using nearby_locations_challenge.Middlewares;
 
 namespace nearby_locations_challenge.Configuration

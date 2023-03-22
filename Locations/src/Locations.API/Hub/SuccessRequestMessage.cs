@@ -1,10 +1,8 @@
-using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.AspNetCore.SignalR;
-using HubConnectionContext = Microsoft.AspNetCore.SignalR.HubConnectionContext;
 
-namespace nearby_locations_challenge.MessagesHub
+namespace nearby_locations_challenge.Hub
 {
-    public class SuccessRequestMessage : Hub, IMessagesHub
+    public class SuccessRequestMessage : Microsoft.AspNetCore.SignalR.Hub, IMessagesHub
     {
         private readonly IHubContext<SuccessRequestMessage> _messagesHub;
 

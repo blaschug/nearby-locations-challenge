@@ -10,6 +10,8 @@ using Locations.Infrastructure.Providers.Locations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using RestSharp;
 
 namespace Locations.Infrastructure
@@ -25,6 +27,18 @@ namespace Locations.Infrastructure
                 .AddDbContext(configuration)
                 .AddExternalProviders(configuration)
                 .AddRepositories();
+
+            return services;
+        }
+
+        private static IServiceCollection AddCustomLogger(IServiceCollection services)
+        {
+            services.AddLogging(builder =>
+            {
+                builder.ClearProviders();
+                builder.SetMinimumLevel(LogLevel.Error);
+                builder.AddNLog();
+            });
 
             return services;
         }

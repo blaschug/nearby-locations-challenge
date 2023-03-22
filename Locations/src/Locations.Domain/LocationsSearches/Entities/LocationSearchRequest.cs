@@ -1,10 +1,10 @@
+using Locations.Domain.Abstractions;
 using Locations.Domain.LocationsSearches.ValueObjects;
 
 namespace Locations.Domain.LocationsSearches.Entities;
 
-public class LocationSearchRequest
+public class LocationSearchRequest : Entity
 {
-    public string Id { get; set; }
     public Coordinates Coordinates { get; set; }
     public string? Category { get; set; }
 }

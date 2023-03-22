@@ -1,4 +1,4 @@
-namespace nearby_locations_challenge.MessagesHub;
+namespace nearby_locations_challenge.Hub;
 
 public interface IMessagesHub
 {

@@ -1,6 +1,8 @@
 using Locations.Application.Commons.Interfaces.Persistance;
 using Locations.Domain.Abstractions;
+using Locations.Infrastructure.Constants;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 
 namespace Locations.Infrastructure.Persistance.Repositories
 {
@@ -8,7 +10,8 @@ namespace Locations.Infrastructure.Persistance.Repositories
     {
         protected readonly LocationsDbContext _dbContext;
         protected readonly DbSet<T> _dbSet;
-
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        
         public RepositoryBase(LocationsDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -17,9 +20,19 @@ namespace Locations.Infrastructure.Persistance.Repositories
 
         public async Task InsertAsync(T entity)
         {
-            await _dbSet.AddAsync(entity);
+            try
+            {
+                await _dbSet.AddAsync(entity);
 
-            await SaveChangesAsync();
+                await SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
+            logger.Info(LogMessages.Info.EntityInserted(entity));
         }
 
         public async Task<int> SaveChangesAsync()
@@ -32,7 +45,7 @@ namespace Locations.Infrastructure.Persistance.Repositories
             }
             catch (Exception ex)
             {
-                //TODO: Add log
+                logger.Error(LogMessages.Error.DatabaseErrorOnSaving, ex);
                 throw;
             }
 

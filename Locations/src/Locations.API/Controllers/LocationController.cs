@@ -5,7 +5,7 @@ using Locations.Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
-using nearby_locations_challenge.MessagesHub;
+using nearby_locations_challenge.Hub;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 

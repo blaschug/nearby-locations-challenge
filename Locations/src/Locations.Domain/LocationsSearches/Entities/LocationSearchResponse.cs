@@ -1,8 +1,9 @@
+using Locations.Domain.Abstractions;
+
 namespace Locations.Domain.LocationsSearches.Entities;
 
-public class LocationSearchResponse
+public class LocationSearchResponse : Entity
 {
-    public string Id { get; set; }
     public string? CategoryFilteredBy { get; set; }
     public List<LocationInfo> NearLocations = new();
 }

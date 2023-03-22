@@ -1,6 +1,8 @@
 using Locations.Application;
 using Locations.Infrastructure;
+using Locations.Infrastructure.Persistance;
 using Microsoft.AspNetCore.Cors.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using nearby_locations_challenge;
 using nearby_locations_challenge.MessagesHub;
 
@@ -18,6 +20,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<LocationsDbContext>();
+        
+        dbContext.Database.Migrate();
+    }
 }
 
 app.UseRouting();

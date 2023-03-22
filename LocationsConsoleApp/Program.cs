@@ -6,6 +6,7 @@ Console.WriteLine("ConsoleApp staring...");
 
 var connection = new HubConnectionBuilder()
     .WithUrl("http://localhost:5239/success-request")
+    .WithAutomaticReconnect()
     .Build();
 
 connection.On<string>("SuccessRequest", (message) => {
@@ -16,7 +17,7 @@ connection.On<string>("SuccessRequest", (message) => {
 
 await connection.StartAsync();
 
-Console.WriteLine("ConsoleApp started.");
+Console.WriteLine("ConsoleApp started and listening.");
 
 while(true)
 {

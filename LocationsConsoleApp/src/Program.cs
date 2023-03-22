@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.SignalR.Client;
 Console.WriteLine("ConsoleApp staring...");
 
 var connection = new HubConnectionBuilder()
-    .WithUrl("http://localhost:5239/success-request")
+    .WithUrl("http://localhost:5001/success-request")
     .WithAutomaticReconnect()
     .Build();
 

@@ -1,12 +1,16 @@
 using Locations.Application.Commons.Interfaces.Persistance;
 using Locations.Domain.LocationsSearches;
+using Locations.Infrastructure.Constants;
 using Microsoft.EntityFrameworkCore;
+using NLog;
 
 namespace Locations.Infrastructure.Persistance.Repositories
 {
     public class LocationRepository 
         : RepositoryBase<LocationSearch>, ILocationRepository
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public LocationRepository(LocationsDbContext dbContext) 
             : base(dbContext)
         {
@@ -14,7 +18,7 @@ namespace Locations.Infrastructure.Persistance.Repositories
 
         public async Task<List<LocationSearch>> GetAll(string? category = null)
         {
-            List<LocationSearch> locationSearches;
+            List<LocationSearch> locationSearches = new();
             IQueryable<LocationSearch> query;
             query = _dbSet
                 .Include(p => p.Response)
@@ -23,14 +27,18 @@ namespace Locations.Infrastructure.Persistance.Repositories
             
             if (!string.IsNullOrEmpty(category)) 
             {
-                locationSearches = await query.Where(p => p.Response.CategoryFilteredBy == category).ToListAsync();
+                query = query.Where(p => p.Response.CategoryFilteredBy == category);
             }
-            else
+
+            try
             {
                 locationSearches = await query.ToListAsync();
             }
-
-            // query.Include(p => p.Response).Include(p => p.Request);
+            catch(Exception ex)
+            {
+                logger.Error(LogMessages.Error.DatabaseErrorOnReading, ex);
+                throw;
+            }
 
             return locationSearches;
         }

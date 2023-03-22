@@ -5,7 +5,6 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>nearby_locations_challenge</RootNamespace>
-      <UserSecretsId>4d551482-e580-4aab-ae01-e12ef3fa3a14</UserSecretsId>
   </PropertyGroup>
 
     <ItemGroup>

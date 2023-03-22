@@ -50,16 +50,15 @@ namespace nearby_locations_challenge.Middlewares
             {
                 status = HttpStatusCode.NotImplemented;
                 message = exception.Message;
-                stackTrace = exception.StackTrace;
             }
             else
             {
                 status = HttpStatusCode.InternalServerError;
                 message = exception.Message;
-                stackTrace = exception.StackTrace;
             }
 
-            var exceptionResult = JsonSerializer.Serialize(new { error = message, stackTrace });
+            var exceptionResult = string.IsNullOrEmpty(stackTrace) ? 
+                JsonSerializer.Serialize(new { error = message }): JsonSerializer.Serialize(new { error = message, stackTrace });
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)status;
 

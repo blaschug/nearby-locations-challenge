@@ -10,6 +10,8 @@ public class LogMessages
 
         public const string DatabaseErrorOnSaving =
             "An error ocurred when trying to save or update new records in database.";
+
+        public const string DatabaseErrorOnReading = "An error ocurred when trying to retrieve records from dataase.";
     }
     
     public partial class Info

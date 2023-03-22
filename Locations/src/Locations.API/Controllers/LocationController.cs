@@ -46,7 +46,6 @@ namespace nearby_locations_challenge.Controllers
         {
             var query = new GetAllSearchesQuery();
 
-            throw new LocationsProviderException();
             var allSearchesResponse = await _mediator.Send(query);
 
             return Ok(allSearchesResponse);

@@ -30,7 +30,7 @@ namespace Locations.Infrastructure.Persistance.Repositories
             {
                 insertedRows = await _dbContext.SaveChangesAsync();
             }
-            catch (DbUpdateException ex)
+            catch (Exception ex)
             {
                 //TODO: Add log
                 throw;

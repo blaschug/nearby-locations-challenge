@@ -6,11 +6,10 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddAPI(this IServiceCollection services)
     {
-        services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
         services.AddControllers();
 
-        services.AddSignalRConfigAndMessages();
+        services
+            .AddSignalRConfigAndMessages();
         
         return services;
     }

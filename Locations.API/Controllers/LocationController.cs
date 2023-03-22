@@ -1,6 +1,7 @@
 using Locations.Application.Locations.Commands.SearchNearbyLocations;
 using Locations.Application.Locations.Queries.GetAllSearches;
 using Locations.Contracts.Locations;
+using Locations.Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -45,6 +46,7 @@ namespace nearby_locations_challenge.Controllers
         {
             var query = new GetAllSearchesQuery();
 
+            throw new LocationsProviderException();
             var allSearchesResponse = await _mediator.Send(query);
 
             return Ok(allSearchesResponse);

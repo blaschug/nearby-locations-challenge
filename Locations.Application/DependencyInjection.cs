@@ -12,7 +12,7 @@ namespace Locations.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<ILocationSearchBuilder, LocationSearchBuilder>();
-
+            
             services.AddMediatrConfiguration();
             
             return services;
